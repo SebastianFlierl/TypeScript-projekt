@@ -35,15 +35,15 @@ export class Akku {
     }
 
     // Akku aufladen
-    aufladen(prozent: number) {
+//    aufladen(prozent: number) {
 
-        this._ladestand += prozent;
+//       this._ladestand += prozent;
 
-        if (this._ladestand > 100) {
-            this._ladestand = 100;
-        }
+//        if (this._ladestand > 100) {
+//            this._ladestand = 100;
+//        }
 
-    }
+//    }
 
     // Informationen anzeigen
     printdata() {

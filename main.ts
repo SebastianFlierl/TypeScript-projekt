@@ -28,8 +28,16 @@ smartphone.zeigeApps();
 
 // 7. Apps starten
 console.log("\n=== APPS STARTEN ===");
-smartphone.starteApp("YouTube");
-smartphone.starteApp("Spotify");
+const apps = ["YouTube", "Spotify", "WhatsApp"];
+
+for (let i = 0; i < 2; i++) {
+
+    let zufall = Math.floor(Math.random() * apps.length);
+
+    smartphone.starteApp(apps[zufall]);
+
+    apps.splice(zufall, 1);
+}
 
 // 8. Smartphone 2 Stunden benutzen
 console.log("\n=== 2 STUNDEN BENUTZEN ===");
