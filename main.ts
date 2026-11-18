@@ -13,11 +13,21 @@ const smartphone = new Smartphone("Samsung S24", 256, 6.2, akku);
 const youtube = new App("YouTube", "1.0", 400);
 const spotify = new App("Spotify", "2.0", 150);
 const whatsapp = new App("WhatsApp", "3.0", 50);
+const tiktok = new App("Tiktok", "4", 100);
+const instagram = new App("Instagram", "7", 70);
+const chatgpt = new App("ChatGPT", "7", 200);
+const snapchat = new App("Snapchat", "6", 60);
 
 // Ruft installiereApp() aus smartphone.ts auf: Die Objekte landen im Array _apps.
 smartphone.installiereApp(youtube);
 smartphone.installiereApp(spotify);
 smartphone.installiereApp(whatsapp);
+smartphone.installiereApp(tiktok);
+smartphone.installiereApp(instagram);
+smartphone.installiereApp(chatgpt);
+smartphone.installiereApp(snapchat);
+
+
 
 // Ruft printdata() aus smartphone.ts auf; dort werden auch die Akku-Daten ausgegeben.
 console.log("\n=== SMARTPHONE ===");
@@ -29,7 +39,7 @@ smartphone.zeigeApps();
 
 // Wir wählen zwei unterschiedliche App-Namen zufällig aus.
 console.log("\n=== APPS STARTEN ===");
-const apps = ["YouTube", "Spotify", "WhatsApp"]; // Nur Namen zur Auswahl, keine neuen App-Objekte.
+const apps = ["YouTube", "Spotify", "WhatsApp", "Tiktok", "Instagram", "ChatGPT", "Snapchat"]; // Nur Namen zur Auswahl, keine neuen App-Objekte.
 
 for (let i = 0; i < 2; i++) { // Wiederholt das Starten zweimal.
 
@@ -58,3 +68,31 @@ smartphone.benutzen(1);
 // Ruft nochmals printdata() auf, damit wir den neuen Akkustand sehen.
 console.log("\n=== ENDERGEBNIS ===");
 smartphone.printdata();
+
+// Spotify deinstallieren
+console.log("\n=== APP DEINSTALLIEREN ===");
+smartphone.deinstalliereApp("Spotify");
+
+// Kontrollieren, welche Apps noch installiert sind
+console.log("\n=== VERBLEIBENDE APPS ===");
+smartphone.zeigeApps();
+
+console.log("\n");
+console.log("\n");
+console.log("\n");
+let akkukaputt = Math.floor(Math.random() * 2);
+if (akkukaputt === 1) {
+    console.log("Der Akku ist kaputt und muss ersetzt werden!");
+
+    // Neuen Akku mit 5000 mAh, 100 % und 0 Ladezyklen erstellen
+    const neuerAkku = new Akku(5000, 100, 0);
+
+    // Funktion aus smartphone.ts aufrufen und Akku ersetzen
+    smartphone.ersetzeAkku(neuerAkku);
+
+} else {
+    console.log("Der Akku ist nicht kaputt!");
+}
+
+console.log("\n=== APPS SUCHEN ===");
+smartphone.sucheApp("s");

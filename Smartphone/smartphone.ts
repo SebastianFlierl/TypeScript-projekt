@@ -25,6 +25,27 @@ export class Smartphone { // export: Die Klasse kann in main.ts importiert werde
         console.log(app.name + " wurde installiert!");
     }
 
+ersetzeAkku(neuerAkku: Akku) {
+    this._akku = neuerAkku;
+    console.log("Der Akku wurde erfolgreich ersetzt!");
+}
+
+
+    deinstalliereApp(name: string) {
+
+    // findIndex() sucht den Index der App im Array
+        let index = this._apps.findIndex((app) => app.name === name);
+    // -1 bedeutet, dass die App nicht gefunden wurde
+        if (index !== -1) {
+        // splice() entfernt eine App an diesem Index
+            this._apps.splice(index, 1);
+            console.log(name + " wurde deinstalliert!");
+
+        } else {
+            console.log("App nicht gefunden!");
+        }
+}
+
     // Aufruf in main.ts: smartphone.zeigeApps().
     zeigeApps() {
         this._apps.forEach((app) => { // forEach() geht jede installierte App durch.
@@ -90,5 +111,14 @@ export class Smartphone { // export: Die Klasse kann in main.ts importiert werde
         console.log("Displaygröße: " + this._displaygroesse + " Zoll");
 
         this._akku.printdata(); // Ruft zusätzlich printdata() aus akku.ts auf.
+    }
+
+    // Sucht alle Apps, die mit dem eingegebenen Text anfangen
+    sucheApp(name: string) {
+        this._apps.forEach((app) => {
+            if (app.name.toLowerCase().startsWith(name.toLowerCase())) {
+                app.printdata();
+            }
+        });
     }
 }
