@@ -1,56 +1,60 @@
+// Wir importieren unsere drei Klassen, damit wir in main.ts Objekte davon erstellen können.
 import {Smartphone} from "./Smartphone/smartphone.ts";
 import {Akku} from "./Akku/akku.ts";
 import {App} from "./App/app.ts";
 
-// 1. Akku erstellen
+// Der Konstruktor aus akku.ts bekommt: Kapazität (mAh), Ladestand (%), Ladezyklen.
 const akku = new Akku(5000, 100, 50);
 
-// 2. Smartphone erstellen
+// Erstellt ein Smartphone mit Modell, Speicher (GB), Displaygröße (Zoll) und unserem Akku.
 const smartphone = new Smartphone("Samsung S24", 256, 6.2, akku);
 
-// 3. Apps erstellen
+// Der App-Konstruktor aus app.ts bekommt: Name, Version, Verbrauch (mAh pro Stunde).
 const youtube = new App("YouTube", "1.0", 400);
 const spotify = new App("Spotify", "2.0", 150);
 const whatsapp = new App("WhatsApp", "3.0", 50);
 
-// 4. Apps installieren
+// Ruft installiereApp() aus smartphone.ts auf: Die Objekte landen im Array _apps.
 smartphone.installiereApp(youtube);
 smartphone.installiereApp(spotify);
 smartphone.installiereApp(whatsapp);
 
-// 5. Smartphone anzeigen
+// Ruft printdata() aus smartphone.ts auf; dort werden auch die Akku-Daten ausgegeben.
 console.log("\n=== SMARTPHONE ===");
 smartphone.printdata();
 
-// 6. Installierte Apps anzeigen
+// Ruft zeigeApps() aus smartphone.ts auf: Zeigt alle installierten Apps.
 console.log("\n=== INSTALLIERTE APPS ===");
 smartphone.zeigeApps();
 
-// 7. Apps starten
+// Wir wählen zwei unterschiedliche App-Namen zufällig aus.
 console.log("\n=== APPS STARTEN ===");
-const apps = ["YouTube", "Spotify", "WhatsApp"];
+const apps = ["YouTube", "Spotify", "WhatsApp"]; // Nur Namen zur Auswahl, keine neuen App-Objekte.
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 2; i++) { // Wiederholt das Starten zweimal.
 
+    // Math.random() liefert eine Zufallszahl; Math.floor() macht daraus einen gültigen Array-Index.
     let zufall = Math.floor(Math.random() * apps.length);
 
+    // Ruft starteApp() aus smartphone.ts mit dem zufällig ausgewählten Namen auf.
     smartphone.starteApp(apps[zufall]);
 
+    // Entfernt diesen Namen nur aus der Auswahl, damit er nicht doppelt gewählt wird.
     apps.splice(zufall, 1);
 }
 
-// 8. Smartphone 2 Stunden benutzen
+// Ruft benutzen() aus smartphone.ts auf: Laufende Apps verbrauchen 2 Stunden lang Akku.
 console.log("\n=== 2 STUNDEN BENUTZEN ===");
 smartphone.benutzen(2);
 
-// 9. YouTube stoppen
+// Ruft stoppeApp() aus smartphone.ts auf. YouTube könnte zufällig gar nicht gestartet sein.
 console.log("\n=== YOUTUBE STOPPEN ===");
 smartphone.stoppeApp("YouTube");
 
-// 10. Smartphone noch 1 Stunde benutzen
+// Berechnet den Verbrauch für eine weitere Stunde mit den jetzt noch laufenden Apps.
 console.log("\n=== 1 STUNDE BENUTZEN ===");
 smartphone.benutzen(1);
 
-// 11. Endergebnis
+// Ruft nochmals printdata() auf, damit wir den neuen Akkustand sehen.
 console.log("\n=== ENDERGEBNIS ===");
 smartphone.printdata();
