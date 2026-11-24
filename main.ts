@@ -1,7 +1,7 @@
 // Wir importieren unsere drei Klassen, damit wir in main.ts Objekte davon erstellen können.
-import {Smartphone} from "./Smartphone/smartphone.ts";
-import {Akku} from "./Akku/akku.ts";
-import {App} from "./App/app.ts";
+import { Smartphone } from "./Smartphone/smartphone.ts";
+import { Akku } from "./Akku/akku.ts";
+import { App } from "./App/app.ts";
 
 // Der Konstruktor aus akku.ts bekommt: Kapazität (mAh), Ladestand (%), Ladezyklen.
 const akku = new Akku(5000, 100, 50);
@@ -27,8 +27,6 @@ smartphone.installiereApp(instagram);
 smartphone.installiereApp(chatgpt);
 smartphone.installiereApp(snapchat);
 
-
-
 // Ruft printdata() aus smartphone.ts auf; dort werden auch die Akku-Daten ausgegeben.
 console.log("\n=== SMARTPHONE ===");
 smartphone.printdata();
@@ -39,18 +37,25 @@ smartphone.zeigeApps();
 
 // Wir wählen zwei unterschiedliche App-Namen zufällig aus.
 console.log("\n=== APPS STARTEN ===");
-const apps = ["YouTube", "Spotify", "WhatsApp", "Tiktok", "Instagram", "ChatGPT", "Snapchat"]; // Nur Namen zur Auswahl, keine neuen App-Objekte.
+const apps = [
+  "YouTube",
+  "Spotify",
+  "WhatsApp",
+  "Tiktok",
+  "Instagram",
+  "ChatGPT",
+  "Snapchat",
+]; // Nur Namen zur Auswahl, keine neuen App-Objekte.
 
 for (let i = 0; i < 2; i++) { // Wiederholt das Starten zweimal.
+  // Math.random() liefert eine Zufallszahl; Math.floor() macht daraus einen gültigen Array-Index.
+  let zufall = Math.floor(Math.random() * apps.length);
 
-    // Math.random() liefert eine Zufallszahl; Math.floor() macht daraus einen gültigen Array-Index.
-    let zufall = Math.floor(Math.random() * apps.length);
+  // Ruft starteApp() aus smartphone.ts mit dem zufällig ausgewählten Namen auf.
+  smartphone.starteApp(apps[zufall]);
 
-    // Ruft starteApp() aus smartphone.ts mit dem zufällig ausgewählten Namen auf.
-    smartphone.starteApp(apps[zufall]);
-
-    // Entfernt diesen Namen nur aus der Auswahl, damit er nicht doppelt gewählt wird.
-    apps.splice(zufall, 1);
+  // Entfernt diesen Namen nur aus der Auswahl, damit er nicht doppelt gewählt wird.
+  apps.splice(zufall, 1);
 }
 
 // Ruft benutzen() aus smartphone.ts auf: Laufende Apps verbrauchen 2 Stunden lang Akku.
@@ -80,18 +85,18 @@ smartphone.zeigeApps();
 console.log("\n");
 console.log("\n");
 console.log("\n");
+
 let akkukaputt = Math.floor(Math.random() * 2);
 if (akkukaputt === 1) {
-    console.log("Der Akku ist kaputt und muss ersetzt werden!");
+  console.log("Der Akku ist kaputt und muss ersetzt werden!");
 
-    // Neuen Akku mit 5000 mAh, 100 % und 0 Ladezyklen erstellen
-    const neuerAkku = new Akku(5000, 100, 0);
+  // Neuen Akku mit 5000 mAh, 100 % und 0 Ladezyklen erstellen
+  const neuerAkku = new Akku(5000, 100, 0);
 
-    // Funktion aus smartphone.ts aufrufen und Akku ersetzen
-    smartphone.ersetzeAkku(neuerAkku);
-
+  // Funktion aus smartphone.ts aufrufen und Akku ersetzen
+  smartphone.ersetzeAkku(neuerAkku);
 } else {
-    console.log("Der Akku ist nicht kaputt!");
+  console.log("Der Akku ist nicht kaputt!");
 }
 
 console.log("\n=== APPS SUCHEN ===");
