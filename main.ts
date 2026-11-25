@@ -113,3 +113,5 @@ smartphone.sucheApp("t");
 //version update von bestimmten apps
 console.log("\nApps updaten")
 smartphone.updateApp("YouTube", "2.0");
+
+console.log("\n" + youtube.name + " " + youtube.version + " " + youtube.verbrauch)
