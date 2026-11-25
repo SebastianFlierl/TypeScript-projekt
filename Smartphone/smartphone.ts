@@ -26,8 +26,14 @@ export class Smartphone { // export: Die Klasse kann in main.ts importiert werde
 
   // Aufruf in main.ts: smartphone.installiereApp(youtube) usw.
   installiereApp(app: App) {
-    this._apps.push(app); // push() hängt das App-Objekt ans Array an.
-    console.log(app.name + " wurde installiert!");
+    if (
+      this._apps.find((installierteApp) => installierteApp.name === app.name)
+    ) {
+      console.log(app.name + " ist bereits installiert");
+    } else {
+      this._apps.push(app); // push() hängt das App-Objekt ans Array an.
+      console.log(app.name + " wurde installiert!");
+    }
   }
 
   ersetzeAkku(neuerAkku: Akku) {
@@ -109,10 +115,15 @@ export class Smartphone { // export: Die Klasse kann in main.ts importiert werde
 
   // Sucht alle Apps, die mit dem eingegebenen Text anfangen
   sucheApp(name: string) {
+    let gefunden = false;
     this._apps.forEach((app) => {
       if (app.name.toLowerCase().startsWith(name.toLowerCase())) {
         app.printdata();
+        gefunden = true;
       }
     });
+    if (gefunden === false) {
+      console.log("Keine passende App gefunden");
+    }
   }
 }

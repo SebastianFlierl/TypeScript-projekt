@@ -27,6 +27,10 @@ smartphone.installiereApp(instagram);
 smartphone.installiereApp(chatgpt);
 smartphone.installiereApp(snapchat);
 
+//verhindern das man 2 mal die gleiche app installieren kann wenn sie schon vorhanden ist
+
+smartphone.installiereApp(spotify);
+
 // Ruft printdata() aus smartphone.ts auf; dort werden auch die Akku-Daten ausgegeben.
 console.log("\n=== SMARTPHONE ===");
 smartphone.printdata();
@@ -101,3 +105,6 @@ if (akkukaputt === 1) {
 
 console.log("\n=== APPS SUCHEN ===");
 smartphone.sucheApp("s");
+smartphone.sucheApp("z");
+smartphone.sucheApp("y");
+smartphone.sucheApp("t");
