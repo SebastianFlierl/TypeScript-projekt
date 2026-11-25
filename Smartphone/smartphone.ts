@@ -126,4 +126,19 @@ export class Smartphone { // export: Die Klasse kann in main.ts importiert werde
       console.log("Keine passende App gefunden");
     }
   }
+
+
+
+// Version einer installierten App aktualisieren
+  updateApp(name: string, neueVersion: string) {
+    // Sucht nach einer installierten App mit diesem Namen
+    let app = this._apps.find((app) => app.name === name);
+    if (app) {
+        // Ruft den Setter version aus app.ts auf
+        app.version = neueVersion;
+        console.log(name + " wurde auf Version " + neueVersion + " aktualisiert!");
+    } else {
+        console.log("App nicht gefunden!");
+    }
+  }
 }

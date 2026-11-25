@@ -22,6 +22,11 @@ export class App { // export: Damit Smartphone und main.ts die Klasse nutzen kö
         return this._version;
     }
 
+    // Ermöglicht es, die Version später zu ändern
+    set version(value: string) {
+        this._version = value;
+    }
+
     get verbrauch(): number {
         return this._verbrauch; // Wird in smartphone.ts bei benutzen() gebraucht.
     }
