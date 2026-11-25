@@ -1,3 +1,30 @@
+console.log("\x1b[36m");
+console.log("╔══════════════════════════════════════════════════════╗");
+console.log("║                                                      ║");
+console.log("║                ███████╗██╗    ██╗██████╗             ║");
+console.log("║                ██╔════╝██║    ██║██╔══██╗            ║");
+console.log("║                ███████╗██║ █╗ ██║██████╔╝            ║");
+console.log("║                ╚════██║██║███╗██║██╔═══╝             ║");
+console.log("║                ███████║╚███╔███╔╝██║                 ║");
+console.log("║                ╚══════╝ ╚══╝╚══╝ ╚═╝                 ║");;
+console.log("║                                                      ║");
+console.log("╠══════════════════════════════════════════════════════╣");
+console.log("║  \x1b[32m● ONLINE\x1b[36m       SYSTEM CONTROL PANEL                 ║");
+console.log("╠══════════════════════════════════════════════════════╣");
+console.log("║                                                      ║");
+console.log("║   \x1b[35m[01]\x1b[36m  akku.ts loaded                               ║");
+console.log("║   \x1b[35m[02]\x1b[36m  app.ts loaded                                ║");
+console.log("║   \x1b[35m[03]\x1b[36m  smartphone.ts loaded                         ║");
+console.log("║   \x1b[35m[04]\x1b[36m  main.ts loaded                               ║");
+console.log("║                                                      ║");
+console.log("╠══════════════════════════════════════════════════════╣");
+console.log("║   STATUS: \x1b[32mTEST STARTED\x1b[36m                               ║");
+console.log("╚══════════════════════════════════════════════════════╝");
+console.log("\x1b[0m");
+
+
+
+
 // Wir importieren unsere drei Klassen, damit wir in main.ts Objekte davon erstellen können.
 import { Smartphone } from "./Smartphone/smartphone.ts";
 import { Akku } from "./Akku/akku.ts";
@@ -17,6 +44,7 @@ const tiktok = new App("Tiktok", "4", 100);
 const instagram = new App("Instagram", "7", 70);
 const chatgpt = new App("ChatGPT", "7", 200);
 const snapchat = new App("Snapchat", "6", 60);
+
 
 // Ruft installiereApp() aus smartphone.ts auf: Die Objekte landen im Array _apps.
 smartphone.installiereApp(youtube);
